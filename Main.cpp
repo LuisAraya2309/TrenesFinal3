@@ -257,7 +257,6 @@ int main(){
 					                system("pause>nul"); // Pausa 
 					                break;                     
 					    	 	case 8:
-					    	 		ConsultarPrecioConexion(paises);
 					                system("pause>nul"); // Pausa 
 					                break; 
 								case 9:
