@@ -648,8 +648,15 @@ pnodoUsuario UsuarioMenor(listaUsuario &listaUsuarios){
 }
 
 void ReservasUsuarios(listaUsuario &listaUsuarios){
+	ofstream archivo;
+    archivo.open("ReporteCompras.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
 	pnodoUsuario aux = listaUsuarios.primero;
 	while(aux!=NULL){
+		archivo<<"Usuario: "<<aux->identificacion<<" Cantidad de Reservas: "<<aux->reservacion.largoLista()<<endl;
 		cout<<"Usuario: "<<aux->identificacion<<" Cantidad de Reservas: "<<aux->reservacion.largoLista()<<endl;
 		aux=aux->siguiente;
 	}

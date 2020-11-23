@@ -31,13 +31,11 @@
 543;1234;CiudadHungria
 67;678;CiudadIrlanda
 89;1222;CiudadItalia
-20;111;CiudadLetonia
 77;643;CiudadLituania
 65;986;CiudadLuxemburgo
 98;789;CiudadMalta
 123;1212;CiudadPaises Bajos
 55;7878;CiudadPortugal
-20;1112;Ciudad Reino Unido
 37;145;Ciudad Republica Checa
 100;1232;CiudadSuecia.
 22;223;2CiudadAustria
@@ -53,13 +51,11 @@
 543;12342;2CiudadHungria
 67;6782;2CiudadIrlanda
 89;1222;2CiudadItalia
-20;1112;2CiudadLetonia
 77;6432;2CiudadLituania
 65;9862;2CiudadLuxemburgo
 98;7892;2CiudadMalta
 123;12122;2CiudadPaises Bajos
 55;78782;2CiudadPortugal
-20;11122;2Ciudad Reino Unido
 37;1452;2Ciudad Republica Checa
 100;12322;2CiudadSuecia.
 23;12122;2CiudadPaises Bajos

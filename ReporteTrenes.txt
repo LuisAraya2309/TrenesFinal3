@@ -1,0 +1,3 @@
+------------------Registro Trenes reservados------------------
+Tren mas utilizado: Thoughtstorm
+Tren menos utilizado: Meembee

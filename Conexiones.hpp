@@ -36,10 +36,17 @@ public:
 };
 
 void PreordenRN(pNodoBinarioRN &R){
-    
+    ofstream archivo;
+    archivo.open("ReporteConexiones.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
     if(R==NULL){
+    	archivo.close();
         return;
     }else{
+    	archivo<<"Codigo de Conexion: "<<R->valor<<" Pais destino: "<<R->codPais<<" Ciudad Destino: "<<R->codCiudad<<" Tiempo: "<<R->tiempo<<endl;
         cout<<"Codigo de Conexion: "<<R->valor<<" Pais destino: "<<R->codPais<<" Ciudad Destino: "<<R->codCiudad<<" Tiempo: "<<R->tiempo<<endl;
         PreordenRN(R->Hizq);
         PreordenRN(R->Hder);

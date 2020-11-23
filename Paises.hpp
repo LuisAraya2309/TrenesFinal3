@@ -6,6 +6,9 @@
 #include<fstream>
 #include<iostream>
 #include <stdlib.h>
+#include <cstdlib>
+#include <math.h>
+#include <cstdio>
 #include "Ciudades.hpp"
 #include "Conexiones.hpp"
 
@@ -50,12 +53,18 @@ bool ExistePais(pNodoBinario &R,int pais){
 	 }
 }
 void PreordenR(NodoBinario *R){
-    
+    ofstream archivo;
+    archivo.open("ReportePaises.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
     if(R==NULL){
         return;
     }
 	else{
         cout<<R->valor<<" - "<<R->nombre<<endl;
+        archivo<<R->nombre<<" , codigo: "<<R->valor<<endl;
         PreordenR(R->Hizq);
         PreordenR(R->Hder);
     }
@@ -242,30 +251,46 @@ void InsertarCiudad(pNodoBinario& paises, string &ultimaCiudad){
 
 
 //Consultar Paises
-void ConsultarPaises(pNodoBinario &paises){
+void ReportePaises(pNodoBinario &paises){
+	remove("ReportePaises.txt");
+	ofstream archivo; archivo.open("ReportePaises.txt", ios::app); archivo<<"------------------Registro Paises------------------"<<endl; archivo.close();
 	PreordenR(paises);
 	cout<<endl;
 }
 
 //Consultar Ciudades
-void preOrder(NodoAVL *raiz)  {  
+void preOrder(NodoAVL *raiz) { 
+	ofstream archivo;
+    archivo.open("ReporteCiudades.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
     if(raiz != NULL)  {  
-        cout <<raiz->codCiudad<<"-"<<raiz->nombre<<endl;  
+        cout <<raiz->codCiudad<<"-"<<raiz->nombre<<endl;
+        archivo<<raiz->nombre<<" , codigo "<<raiz->codCiudad<<endl;
         preOrder(raiz->izquierda);  
         preOrder(raiz->derecha);  
     }  
 }
 
 void ConsultarCiudades(pNodoBinario &paises){
+	ofstream archivo;
+    archivo.open("ReporteCiudades.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
 	int paisAux; cout<<"Ingrese el codigo del pais para ver las ciudades: ";cin>>paisAux; cout<<endl;
-	
 	if(ExistePais(paises, paisAux)){
+		archivo<<"------ Ciudades del pais: "<<paisAux<<" ------"<<endl;
 		pNodoBinario pais = DevolverPais(paises,paisAux);
 		cout<<"Ciudades de ese pais: "<<endl;
 		preOrder(pais->ciudad);	
 	}else{
 		cout<<"El codigo de pais no existe"<<endl;
 	}
+	archivo.close();
 }
 
 //CargarConexiones
@@ -375,19 +400,27 @@ void InsertarConexion(pNodoBinario &paises, string &ultimaConexion){
 
 
 void ConsultarConexiones(pNodoBinario &paises){
+	ofstream archivo;
+    archivo.open("ReporteConexiones.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
 	int paisAux; cout<<"Ingrese el codigo del pais: ";cin>>paisAux; cout<<endl;
 	int codCiudad; cout<<"Ingrese el codigo de la ciudad para ver las conexiones: ";cin>>codCiudad;cout<<endl;
 	if(ExistePais(paises, paisAux)){
 		pNodoBinario pais = DevolverPais(paises,paisAux);
 		if(ExisteCiudad(pais->ciudad,codCiudad)){
 			NodoAVL *ciudadAux = DevolverCiudad(pais->ciudad,codCiudad);
+			archivo<<endl<<"Conexiones de la ciudad de codigo "<<codCiudad<<" del pais "<<paisAux<<endl;
 			PreordenRN(ciudadAux->conexiones.raiz);
 		}else{
 			cout<<"El codigo de la ciudad no existe"<<endl;
 		}
 	}else{
 		cout<<"El codigo de pais no existe"<<endl;
-	}	
+	}
+	archivo.close();
 }
 
 void ModificarTiempo(pNodoBinario &paises){

@@ -216,8 +216,15 @@ void RegistrarTrenes(pNodoTipoTren& tipoTrenes, string &ultimoTren){
 }
 
 //Consultar los trenes de un tipo
-void preOrderTren(NodoAVLTren *raiz)  {  
-    if(raiz != NULL)  {  
+void preOrderTren(NodoAVLTren *raiz) {
+	ofstream archivo;
+    archivo.open("ReporteTipTren.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
+    if(raiz != NULL)  {
+    	archivo<<raiz->nombre<<", codigo "<<raiz->codTren<<", numero de asientos "<<raiz->cantAsientos<<endl;
         cout <<raiz->codTren<<"-"<<raiz->nombre<<", numero de asientos: "<<raiz->cantAsientos<<endl;  
         preOrderTren(raiz->izquierda);  
         preOrderTren(raiz->derecha);  
@@ -225,12 +232,24 @@ void preOrderTren(NodoAVLTren *raiz)  {
 }
 
 void ConsultarTrenes(pNodoTipoTren& tipoTrenes){
+	ofstream archivo;
+    archivo.open("ReporteTipTren.txt", ios::app);
+    if(archivo.fail()){
+        cout<<"No se pudo crear el archivo"<<endl;
+        exit(1);
+    }
 	int codTipTren; cout<<"Ingrese el codigo del tipo de tren al que pertenece el tren: "; cin>>codTipTren; cout<<endl;
-	pNodoTipoTren tipTren = DevolverTipoTren(tipoTrenes,codTipTren);
-	NodoAVLTren *tipoTrenAux = tipTren->tren;
-	cout<<"Trenes de ese tipo: "<<endl;
-	preOrderTren(tipoTrenAux);
-	cout<<endl;
+	if(ExisteTipoTren(tipoTrenes, codTipTren)){
+		pNodoTipoTren tipTren = DevolverTipoTren(tipoTrenes,codTipTren);
+		NodoAVLTren *tipoTrenAux = tipTren->tren;
+		cout<<"Trenes de ese tipo: "<<endl;
+		archivo<<endl<<"Trenes del tipo de tren "<<codTipTren<<endl;
+		preOrderTren(tipoTrenAux);
+		cout<<endl;
+	}else{
+		cout<<"El codigo de tipo de tren no existe"<<endl;
+	}
+	
 }
 
 void CantAsientos(pNodoTipoTren& tipoTrenes ){

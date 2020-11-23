@@ -1,0 +1,2 @@
+------------------Registro Compras------------------
+Usuario: 214213 Cantidad de Reservas: 2

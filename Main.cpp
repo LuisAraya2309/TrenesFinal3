@@ -52,15 +52,17 @@ int main(){
 	
 	listaBoleteria boletos;
 	listaUsuario listaUsuarios;
-	/*boletos.CrearColaPasajeros();
-	VentaTiquetes(boletos,usuarios,paises,tipoTrenes);
-	Reservacion(tipoTrenes,paises,listaUsuarios,rutas, reporteCiudad, reporteTren);
-	Reservacion(tipoTrenes,paises,listaUsuarios,rutas, reporteCiudad, reporteTren);
-	Reservacion(tipoTrenes,paises,listaUsuarios,rutas, reporteCiudad, reporteTren);*/
-
+	ofstream archivo; archivo.open("ReportePaises.txt", ios::app); archivo<<"------------------Registro Paises------------------"<<endl; archivo.close();
+	ofstream archivoC; archivoC.open("ReporteCiudades.txt", ios::app); archivoC<<"------------------Registro Ciudades------------------"<<endl; archivoC.close();
+	ofstream archivoConx; archivoConx.open("ReporteConexiones.txt", ios::app); archivoConx<<"------------------Registro Conexiones------------------"<<endl; archivoConx.close();
+	ofstream archivoTipT; archivoTipT.open("ReporteTipTren.txt", ios::app); archivoTipT<<"------------------Registro Trenes------------------"<<endl; archivoTipT.close();
+	ofstream archivoUMas; archivoUMas.open("ReporteUsuario.txt", ios::app); archivoUMas<<"------------------Registro Usuario------------------"<<endl; archivoUMas.close();
+	ofstream archivoCompU; archivoCompU.open("ReporteCompras.txt", ios::app); archivoCompU<<"------------------Registro Compras------------------"<<endl; archivoCompU.close();
+	ofstream archivoTren; archivoTren.open("ReporteTrenes.txt", ios::app); archivoTren<<"------------------Registro Trenes reservados------------------"<<endl; archivoTren.close();
 	//---------------------------------------------------------Menu Principal------------------------------------------------- 
 	//Variables del menu-----------------------------
     int opcion,codUsuario,registrar,rutaMa,rutaMe;
+    ofstream UsuarioMas, UsuarioMenos, CompUsuarios, TrenMas, TrenMenos;
     //------------------------------------------------
 	do { 
         system("cls");
@@ -237,7 +239,7 @@ int main(){
 									    system("pause>nul"); // Pausa 
 									    break;                     
 					    	 	case 3:
-								 	ConsultarPaises(paises);     
+								 	ReportePaises(paises);     
 					                system("pause>nul"); // Pausa 
 					                break; 
 								case 4:
@@ -287,10 +289,23 @@ int main(){
 					                system("pause>nul"); // Pausa 
 					                break; 
 								case 15:
-									cout<<"El usuario que mas reservo es el de codigo "<<UsuarioMayor(listaUsuarios)->identificacion<<endl;                
+								    UsuarioMas.open("ReporteUsuario.txt", ios::app);
+								    if(UsuarioMas.fail()){
+								        cout<<"No se pudo crear el archivo"<<endl;
+								        exit(1);
+								    }
+								    UsuarioMas<<"El usuario que mas reservo es el de codigo "<<UsuarioMayor(listaUsuarios)->identificacion<<endl;
+									cout<<"El usuario que mas reservo es el de codigo "<<UsuarioMayor(listaUsuarios)->identificacion<<endl;
+									UsuarioMas.close();            
 					                system("pause>nul"); // Pausa 
 					                break;
-								case 16: 
+								case 16:
+									UsuarioMenos.open("ReporteUsuario.txt", ios::app);
+								    if(UsuarioMenos.fail()){
+								        cout<<"No se pudo crear el archivo"<<endl;
+								        exit(1);
+								    }
+								    UsuarioMenos<<"El usuario que menos reservo es el de codigo "<<UsuarioMenor(listaUsuarios)->identificacion<<endl;
 									cout<<"El usuario que menos reservo es el de codigo "<<UsuarioMenor(listaUsuarios)->identificacion<<endl;    
 					                system("pause>nul"); // Pausa 
 					                break; 
@@ -299,10 +314,22 @@ int main(){
 					                system("pause>nul"); // Pausa 
 					                break;
 								case 18:
+									TrenMas.open("ReporteTrenes.txt", ios::app);
+								    if(TrenMas.fail()){
+								        cout<<"No se pudo crear el archivo"<<endl;
+								        exit(1);
+								    }
+								    TrenMas<<"Tren mas utilizado: "<<TrenMayor(reporteTren, tipoTrenes)<<endl;
 									cout<<"Tren mas utilizado: "<<TrenMayor(reporteTren, tipoTrenes)<<endl;
 					                system("pause>nul"); // Pausa 
 					                break;
-								case 19: 
+								case 19:
+									TrenMenos.open("ReporteTrenes.txt", ios::app);
+								    if(TrenMenos.fail()){
+								        cout<<"No se pudo crear el archivo"<<endl;
+								        exit(1);
+								    }
+								    TrenMenos<<"Tren menos utilizado: "<<DevolverTren2(DevolverTipoTren(tipoTrenes,TrenMenor(reporteTren, tipoTrenes)->identificacion)->tren, TrenMenor(reporteTren, tipoTrenes)->codTren )<<endl;
 									cout<<"Tren menos utilizado: "<<DevolverTren2(DevolverTipoTren(tipoTrenes,TrenMenor(reporteTren, tipoTrenes)->identificacion)->tren, TrenMenor(reporteTren, tipoTrenes)->codTren )<<endl;
 					                system("pause>nul"); // Pausa 
 					                break;
@@ -349,7 +376,7 @@ int main(){
 							         
 							        switch (opcion) { 
 							            case 1: 
-							            	ConsultarPaises(paises);
+							            	ReportePaises(paises);
 							                system("pause>nul"); // Pausa 
 							                break; 
 							                 
