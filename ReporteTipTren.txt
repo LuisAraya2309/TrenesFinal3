@@ -1,1 +1,41 @@
 ------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+
+Trenes del tipo de tren 3
+Thoughtstorm, codigo 3574, numero de asientos 2043
+Thoughtstorm2, codigo 7777, numero de asientos 2043
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+------------------Registro Trenes------------------
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 3
+Thoughtstorm, codigo 3574, numero de asientos 2043
+Thoughtstorm2, codigo 7777, numero de asientos 2043
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1
+Meembee, codigo 1236, numero de asientos 2170
+
+Trenes del tipo de tren 1

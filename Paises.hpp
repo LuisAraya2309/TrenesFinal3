@@ -449,8 +449,87 @@ void ModificarTiempo(pNodoBinario &paises){
 	}
 }
 
- 
+//---------------------------------------------------------
 
+
+
+pNodoBinario unirABB(pNodoBinario izq, pNodoBinario der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    pNodoBinario centro = unirABB(izq->Hder, der->Hizq);
+    izq->Hder = centro;
+    der->Hizq = izq;
+    return der;
+}
+
+void EliminarPais(pNodoBinario &paises, int x){
+     if(paises==NULL) return;
+
+     if(x<paises->valor)
+         EliminarPais(paises->Hizq, x);
+     else if(x>paises->valor)
+         EliminarPais(paises->Hder, x);
+
+     else{
+         pNodoBinario p = paises;
+         paises = unirABB(paises->Hizq, paises->Hder);
+         delete p;
+     }
+}
+
+
+
+ pNodoBinarioRN unirRN(pNodoBinarioRN izq, pNodoBinarioRN der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    pNodoBinarioRN centro = unirRN(izq->Hder, der->Hizq);
+    izq->Hder = centro;
+    der->Hizq = izq;
+    return der;
+}
+
+void EliminarRN(pNodoBinarioRN &conexiones, int x){
+     if(conexiones==NULL) return;
+
+     if(x<conexiones->valor)
+         EliminarRN(conexiones->Hizq, x);
+     else if(x>conexiones->valor)
+         EliminarRN(conexiones->Hder, x);
+
+     else{
+         pNodoBinarioRN p = conexiones;
+         conexiones = unirRN(conexiones->Hizq, conexiones->Hder);
+         delete p;
+     }
+}
+
+void EliminarConexion(pNodoBinario &paises){
+	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
+	int codCiudad; cout<<"Ingrese el codigo de la ciudad: "; cin>>codCiudad; cout<<endl;
+	int codConexion; cout<<"Ingrese el codigo de la conexion: "; cin>>codConexion; cout<<endl;
+	if(ExistePais(paises,codPais)){
+		pNodoBinario paisAux = DevolverPais(paises,codPais);
+		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
+			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
+			if(ExisteConexion(ciudadAux->conexiones.raiz,codConexion)){
+				EliminarRN(ciudadAux->conexiones.raiz,codConexion);
+				cout<<"Conexion eliminada con exito."<<endl;
+			}
+			else{
+				cout<<"El codigo de la conexion no existe"<<endl;
+			}
+		}
+		else{
+			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;
+		}
+	}
+	else{
+		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
+	}
+}
+//---------------------------------------------------------
 
 
 

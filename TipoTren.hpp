@@ -417,6 +417,97 @@ pnodoBoleteria TrenMenor(listaBoleteria &Tren, pNodoTipoTren &tipoTrenes){
 }
 
 
+ NodoAVLTren* unirTren(NodoAVLTren* izq, NodoAVLTren* der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    NodoAVLTren* centro = unirTren(izq->izquierda, der->derecha);
+    izq->derecha = centro;
+    der->izquierda = izq;
+    return der;
+}
+
+void EliminarTren(NodoAVLTren* &tren, int x){
+     if(tren==NULL) return;
+
+     if(x<tren->codTren)
+         EliminarTren(tren->izquierda, x);
+     else if(x>tren->codTren)
+         EliminarTren(tren->derecha, x);
+
+     else{
+         NodoAVLTren* p = tren;
+         tren = unirTren(tren->izquierda, tren->derecha);
+         delete p;
+     }
+}
+
+
+ pnodoAA unirCR(pnodoAA izq, pnodoAA der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    pnodoAA centro = unirCR(izq->Hder, der->Hizq);
+    izq->Hder = centro;
+    der->Hizq = izq;
+    return der;
+}
+
+void EliminarCR(pnodoAA &codR, int x){
+     if(codR==NULL) return;
+
+     if(x<codR->valor)
+         EliminarCR(codR->Hizq, x);
+     else if(x>codR->valor)
+         EliminarCR(codR->Hder, x);
+
+     else{
+         pnodoAA p = codR;
+         codR = unirCR(codR->Hizq, codR->Hder);
+         delete p;
+     }
+}
+
+NodoAVLTren* DevolverTrenX(NodoAVLTren* &R,int codTren){
+	 if(R->codTren==codTren){
+	 	return R;
+	 }
+	 else if(codTren<=R->codTren){
+	 	return DevolverTrenX(R->izquierda,codTren);
+	 }
+	 else{
+	 	return DevolverTrenX(R->derecha,codTren);
+	 }
+}
+
+void EliminarTren(pNodoTipoTren &tipoTrenes){
+	int codTipTren; cout<<"Ingrese el codigo de tipo de tren: "; cin>>codTipTren; cout<<endl;
+	int codTren; cout<<"Ingrese el codigo de tren: "; cin>>codTren; cout<<endl;
+	if(ExisteTipoTren(tipoTrenes,codTipTren)){
+    	pNodoTipoTren tipoTren = DevolverTipoTren(tipoTrenes,codTipTren);
+    	if(ExisteTren(tipoTrenes->tren,codTren)){
+    		NodoAVLTren* aux = DevolverTrenX(tipoTrenes->tren,codTren);
+    		cout<<"Rutas del tren: "<<endl;
+    		aux->codRutas.PreordenAA(aux->codRutas.raiz);
+    		while(aux->codRutas.raiz!=NULL){
+    			EliminarCR(aux->codRutas.raiz,aux->codRutas.raiz->valor); //ARREGLAR BORRADO DE AA
+			}
+			cout<<"Rutas del tren despues de eliminar: "<<endl;
+    		aux->codRutas.PreordenAA(aux->codRutas.raiz);
+    		
+    		EliminarTren(tipoTrenes->tren,codTren);
+    		cout<<"Tren eliminado con exito."<<endl;
+		}else{
+			cout<<"El codigo de tren no existe"<<endl;
+		}	
+	}else{
+		cout<<"El codigo de tipo de tren no existe"<<endl;
+	}
+}
+
+
+
+
 
 #endif	
 

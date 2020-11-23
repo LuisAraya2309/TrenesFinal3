@@ -29,7 +29,7 @@ class ArbolRutas{
     pnodoAA Giro(pnodoAA &nodoP);
     pnodoAA Reparto(pnodoAA &nodoP);
     pnodoAA insertarBalanceado(int num);
-    void PreordenAA(pnodoAA &raizP);
+    void PreordenAA(pnodoAA raizP);
 };
 pnodoAA ArbolRutas::Giro(pnodoAA &nodoP){
     if (nodoP==NULL){
@@ -86,7 +86,7 @@ pnodoAA ArbolRutas::insertarBalanceado(int num){
     return nuevoArbol;
 }
 
-void ArbolRutas::PreordenAA(pnodoAA &raizP){
+void ArbolRutas::PreordenAA(pnodoAA raizP){
     if(raizP==NULL){
         return;
     }

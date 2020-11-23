@@ -1,3 +1,7 @@
 ------------------Registro Usuario------------------
 El usuario que mas reservo es el de codigo 214213
 El usuario que menos reservo es el de codigo 214213
+------------------Registro Usuario------------------
+------------------Registro Usuario------------------
+------------------Registro Usuario------------------
+------------------Registro Usuario------------------

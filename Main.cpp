@@ -39,10 +39,15 @@ int main(){
 	pNodoTipoTren tipoTrenes = CargarTipoTrenes();//Tipos de Tren
 	CargarTrenes(tipoTrenes);//Trenes
 	
-	
 	listaC rutas;
 	rutas.CargarRutas(paises,tipoTrenes); //Rutas
 	CargarCodRutas(tipoTrenes,rutas); //CodRutas
+	
+	//Pruebas
+	
+	
+	
+	//Pruebas
 	
 	BTree admins(3);
 	CargarAdmin(admins);//Carga admin
@@ -59,6 +64,9 @@ int main(){
 	ofstream archivoUMas; archivoUMas.open("ReporteUsuario.txt", ios::app); archivoUMas<<"------------------Registro Usuario------------------"<<endl; archivoUMas.close();
 	ofstream archivoCompU; archivoCompU.open("ReporteCompras.txt", ios::app); archivoCompU<<"------------------Registro Compras------------------"<<endl; archivoCompU.close();
 	ofstream archivoTren; archivoTren.open("ReporteTrenes.txt", ios::app); archivoTren<<"------------------Registro Trenes reservados------------------"<<endl; archivoTren.close();
+	
+	
+	/*
 	//---------------------------------------------------------Menu Principal------------------------------------------------- 
 	//Variables del menu-----------------------------
     int opcion,codUsuario,registrar,rutaMa,rutaMe;
@@ -420,5 +428,6 @@ int main(){
 	                break;           
     	} 		 
 	}while (opcion != 3);
+	*/
     return 0;
 }
