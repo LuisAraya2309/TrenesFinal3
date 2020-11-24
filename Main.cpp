@@ -39,14 +39,14 @@ int main(){
 	pNodoTipoTren tipoTrenes = CargarTipoTrenes();//Tipos de Tren
 	CargarTrenes(tipoTrenes);//Trenes
 	
-	listaC rutas;
-	rutas.CargarRutas(paises,tipoTrenes); //Rutas
-	CargarCodRutas(tipoTrenes,rutas); //CodRutas
+	//listaC rutas;
+	//rutas.CargarRutas(paises,tipoTrenes); //Rutas
+	//CargarCodRutas(tipoTrenes,rutas); //CodRutas
 	
 	//Pruebas
-	
-	
-	
+	ConsultarConexiones(paises);
+	EliminarConexion(paises);
+	ConsultarConexiones(paises);
 	//Pruebas
 	
 	BTree admins(3);

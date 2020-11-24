@@ -492,12 +492,10 @@ void EliminarPais(pNodoBinario &paises, int x){
 
 void EliminarRN(pNodoBinarioRN &conexiones, int x){
      if(conexiones==NULL) return;
-
      if(x<conexiones->valor)
          EliminarRN(conexiones->Hizq, x);
      else if(x>conexiones->valor)
          EliminarRN(conexiones->Hder, x);
-
      else{
          pNodoBinarioRN p = conexiones;
          conexiones = unirRN(conexiones->Hizq, conexiones->Hder);
@@ -516,6 +514,7 @@ void EliminarConexion(pNodoBinario &paises){
 			if(ExisteConexion(ciudadAux->conexiones.raiz,codConexion)){
 				EliminarRN(ciudadAux->conexiones.raiz,codConexion);
 				cout<<"Conexion eliminada con exito."<<endl;
+				//FALTA ELIMINAR RUTA
 			}
 			else{
 				cout<<"El codigo de la conexion no existe"<<endl;
@@ -529,8 +528,98 @@ void EliminarConexion(pNodoBinario &paises){
 		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
 	}
 }
-//---------------------------------------------------------
 
+
+NodoAVL* unirCiudad(NodoAVL* izq, NodoAVL* der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    NodoAVL* centro = unirCiudad(izq->derecha, der->izquierda);
+    izq->derecha = centro;
+    der->izquierda = izq;
+    return der;
+}
+
+void EliminarCiudad(NodoAVL* &ciudades, int x){
+     if(ciudades==NULL){
+     	
+	 }
+     if(x<ciudades->codCiudad)
+         EliminarCiudad(ciudades->izquierda, x);
+     else if(x>ciudades->codCiudad)
+         EliminarCiudad(ciudades->derecha, x);
+
+     else{
+         NodoAVL* p = ciudades;
+         ciudades = unirCiudad(ciudades->izquierda, ciudades->derecha);
+         delete p;
+     }
+}
+
+void EliminarCG3(pNodoBinarioRN &R,int ciudad){
+	if(R==NULL){
+		cout<<"Conexiones NULL"<<endl;
+		return;
+	}
+	else{
+    	if(R->codCiudad==ciudad){
+    		cout<<R->valor<<endl;
+    		cout<<"Eliminando conexion de ciudad."<<endl;
+    		EliminarRN(R,R->valor);
+		}
+        EliminarCG3(R->Hizq,ciudad);
+        EliminarCG3(R->Hder,ciudad);
+    }
+}
+
+void EliminarCG2(NodoAVL *ciudades,int ciudad){ 
+    if(ciudades != NULL)  {
+		cout<<"Recorriendo ciudad: "<<ciudades->codCiudad<<endl;
+		pNodoBinarioRN &conexionAux = ciudades->conexiones.raiz; 
+		EliminarCG3(conexionAux,ciudad);
+	
+		EliminarCG2(ciudades->izquierda,ciudad);  
+    	EliminarCG2(ciudades->derecha,ciudad);
+    }
+	else{
+		cout<<"Ciudades NULL"<<endl;
+		return;
+	}  
+}
+
+void EliminarCG(pNodoBinario &paises,int ciudad){
+    if(paises==NULL){
+    	cout<<"Paises NULL"<<endl;
+        return;
+    }
+	else{
+		cout<<"Recorriendo pais: "<<paises->valor<<endl;
+		NodoAVL* &ciudadAux = paises->ciudad;
+        EliminarCG2(ciudadAux,ciudad);
+        EliminarCG(paises->Hizq,ciudad);
+        EliminarCG(paises->Hder,ciudad);
+    }
+}
+
+void EliminarCiudad(pNodoBinario &paises){
+	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
+	int codCiudad; cout<<"Ingrese el codigo de la ciudad: "; cin>>codCiudad; cout<<endl;
+	if(ExistePais(paises,codPais)){
+		pNodoBinario paisAux = DevolverPais(paises,codPais);
+		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
+			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
+			//Borra conexiones de esa ciudad
+			pNodoBinarioRN aux = ciudadAux->conexiones.raiz;
+			
+		}
+		else{
+			cout<<"El codigo de ciudad ingresado no existe."<<endl;
+		}
+	}
+	else{
+		cout<<"El codigo de pais ingresado no existe."<<endl;
+	}
+}
 
 
 #endif	

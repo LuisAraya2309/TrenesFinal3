@@ -39,3 +39,9 @@ Trenes del tipo de tren 1
 Meembee, codigo 1236, numero de asientos 2170
 
 Trenes del tipo de tren 1
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
+------------------Registro Trenes------------------
