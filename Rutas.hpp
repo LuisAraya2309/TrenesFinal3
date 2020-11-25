@@ -10,31 +10,24 @@
 #include "UsuarioReservacion.hpp"
 #include "Boleteria.hpp"
 #pragma once 
-using namespace std; 
- 
-class nodoCir { 
-public: 
-    nodoCir(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c, int precioc) { 
+using namespace std;
+class nodoCir {
+public:
+    nodoCir(int v, int trenc, int rutac, int conexionc,  int precioc) { 
         codTipTren = v; 
         codTren= trenc;
-        codRutas = rutac; 
-        codPais1 = paisc; 
-        codCiudad1 = ciudadc; 
-        codPais2 = pais2c; 
-        codCiudad2 = ciudad2c; 
+        codRutas = rutac;
+        codConexion = conexionc;
         precio = precioc; 
         siguiente = NULL; 
         reservacion = 0;
     } 
  
-    nodoCir(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc, nodoCir* signodo) { 
+    nodoCir(int v, int trenc, int rutac,int conexionc,  int precioc, nodoCir* signodo) { 
         codTipTren = v; 
         codTren= trenc; 
-        codRutas = rutac; 
-        codPais1 = paisc; 
-        codCiudad1 = ciudadc; 
-        codPais2 = pais2c; 
-        codCiudad2 = ciudad2c; 
+        codRutas = rutac;
+        codConexion = conexionc;
         precio = precioc; 
         siguiente = signodo; 
     } 
@@ -42,11 +35,8 @@ public:
 public: 
     int codTipTren; 
     int codTren; 
-    int codRutas ; 
-    int codPais1 ; 
-    int codCiudad1 ; 
-    int codPais2 ; 
-    int codCiudad2 ; 
+    int codRutas ;
+    int codConexion;
     int precio;
 	int reservacion; 
     nodoCir* siguiente; 
@@ -62,9 +52,9 @@ public:
     listaC() { primero = NULL; } 
     ~listaC(); 
  
-    void InsertarInicio(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc); 
-    void InsertarFinal(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc); 
-    void InsertarPos(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc, int pos); 
+    void InsertarInicio(int v, int trenc, int rutac, int conexionc, int precioc); 
+    void InsertarFinal(int v, int trenc, int rutac, int conexionc,int precioc); 
+    void InsertarPos(int v, int trenc, int rutac, int conexionc,int precioc, int pos); 
     bool ListaVacia() { return primero == NULL; } 
     void ConsultarRuta(); 
     void BorrarFinal(); 
@@ -84,16 +74,14 @@ public:
 }; 
  
 listaC::~listaC() { 
-    pnodoCir aux; 
- 
+    pnodoCir aux;
     while (primero) { 
         aux = primero; 
         primero = primero->siguiente; 
         delete aux; 
-    } 
- 
-} 
- 
+    }
+}
+
 int listaC::largoLista() { 
     int cont = 0; 
  
@@ -111,15 +99,15 @@ int listaC::largoLista() {
     } 
 } 
  
-void listaC::InsertarInicio(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc) { 
+void listaC::InsertarInicio(int v, int trenc, int rutac, int conexionc,int precioc) { 
      if (ListaVacia()){ 
-    primero = new nodoCir(v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc, primero); 
+    primero = new nodoCir(v,  trenc,  rutac, conexionc, precioc, primero); 
     primero->siguiente=primero; 
     } 
    else{ // La funcionalidad de esta parte es que crea un nuevo nodo con el valor asignado y la direccion de primero, luego crea un aux con el valor de primero 
    // Al entrar al while con el parametro actualizado encontraremos el valor del aux que necesitamos para enlazar el nodo con la dirrecion anterior 
    // y posterior por lo que no se hara basura. 
-       pnodoCir nuevo = new nodoCir(v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+       pnodoCir nuevo = new nodoCir(v,  trenc,  rutac, conexionc, precioc); 
        pnodoCir aux = primero; 
        while(aux->siguiente!=primero){ 
            aux=aux->siguiente; 
@@ -129,14 +117,14 @@ void listaC::InsertarInicio(int v, int trenc, int rutac, int paisc, int ciudadc,
    } 
 } 
  
-void listaC::InsertarFinal(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc) { 
+void listaC::InsertarFinal(int v, int trenc, int rutac, int conexionc,int precioc) { 
     if (ListaVacia()) { 
-    	pnodoCir nuevo = new nodoCir(v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+    	pnodoCir nuevo = new nodoCir(v,  trenc,  rutac,conexionc, precioc); 
     	primero= nuevo; 
     	primero->siguiente=primero; 
     } 
     else { 
-        pnodoCir nuevo = new nodoCir( v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+        pnodoCir nuevo = new nodoCir( v,  trenc,  rutac,conexionc, precioc); 
         pnodoCir aux = primero; 
         while (aux->siguiente != primero){ 
         	aux = aux->siguiente; 
@@ -146,11 +134,11 @@ void listaC::InsertarFinal(int v, int trenc, int rutac, int paisc, int ciudadc, 
     } 
 } 
  
-void listaC::InsertarPos(int v, int trenc, int rutac, int paisc, int ciudadc, int pais2c, int ciudad2c,int precioc ,int pos) 
+void listaC::InsertarPos(int v, int trenc, int rutac, int conexionc, int precioc ,int pos) 
 { 
     if (ListaVacia()) 
     { 
-        pnodoCir nuevo = new nodoCir( v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+        pnodoCir nuevo = new nodoCir( v,  trenc,  rutac,conexionc, precioc); 
         primero = nuevo; 
         nuevo->siguiente = primero; 
     } 
@@ -158,7 +146,7 @@ void listaC::InsertarPos(int v, int trenc, int rutac, int paisc, int ciudadc, in
     { 
         if (pos <= 1) 
         { 
-            InsertarInicio(v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+            InsertarInicio(v,  trenc,  rutac, conexionc, precioc); 
         } 
         else 
         { 
@@ -169,7 +157,7 @@ void listaC::InsertarPos(int v, int trenc, int rutac, int paisc, int ciudadc, in
                 i++; 
                 aux = aux->siguiente; 
             } 
-            pnodoCir nuevo = new nodoCir(v,  trenc,  rutac,  paisc,  ciudadc,  pais2c,  ciudad2c, precioc); 
+            pnodoCir nuevo = new nodoCir(v,  trenc,  rutac, conexionc, precioc); 
             nuevo->siguiente = aux->siguiente; 
             aux->siguiente = nuevo; 
         } 
@@ -260,10 +248,10 @@ void listaC::ConsultarRuta() {
     	cout<<"No hay ninuna ruta registrada"<<endl;
 	}else{
 		while (aux->siguiente != primero) { 
-        cout <<"Tipo tren: "<<aux->codTipTren << " Tren: " << aux->codTren << " Ruta: " << aux->codRutas << " Pais1: " << aux->codPais1 << " Ciudad1: "<< aux->codCiudad1 << " Pais2: "<< aux->codPais2 << " Ciudad2: "<< aux->codCiudad2 <<" Precio: "<< aux->precio << "-> "<<endl; 
+        cout <<"Tipo tren: "<<aux->codTipTren << " Tren: " << aux->codTren << " Ruta: " << aux->codRutas << " Conexion: "<< aux->codConexion <<" Precio: "<< aux->precio << "-> "<<endl; 
         aux = aux->siguiente; 
 	    } 
-	    cout <<"Tipo tren: "<<aux->codTipTren << " Tren: " << aux->codTren << " Ruta: " << aux->codRutas << " Pais1: " << aux->codPais1 << " Ciudad1: "<< aux->codCiudad1 << " Pais2: "<< aux->codPais2 << " Ciudad2: "<< aux->codCiudad2 <<" Precio: "<< aux->precio << "-> "<<endl;
+		cout <<"Tipo tren: "<<aux->codTipTren << " Tren: " << aux->codTren << " Ruta: " << aux->codRutas << " Conexion: "<< aux->codConexion <<" Precio: "<< aux->precio << "-> "<<endl; 
 	    cout << endl; 	
 	}
 }
@@ -318,6 +306,44 @@ pnodoCir listaC::DevolverRuta(int codRuta){
 		return aux;
 	}
 }
+void ExisteConexionG3(pNodoBinarioRN &R,bool &flag, int codConexion){
+	if(R==NULL){
+		return;
+	}
+	else{
+    	if(R->valor==codConexion){
+    		flag = true;
+    		return;
+		}
+        ExisteConexionG3(R->Hizq,flag, codConexion);
+        ExisteConexionG3(R->Hder,flag, codConexion);
+    }
+}
+
+void ExisteConexionG2(NodoAVL *&ciudades,bool &flag, int codConexion){ 
+    if((ciudades != NULL) && (flag != true)) {
+		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
+		ExisteConexionG3(conexionAux,flag, codConexion);
+	
+		ExisteConexionG2(ciudades->izquierda,flag, codConexion);  
+    	ExisteConexionG2(ciudades->derecha,flag, codConexion);
+    }
+	else{
+		return;
+	}  
+}
+
+void ExisteConexionG(pNodoBinario &paises,bool &flag, int codConexion){
+    if((paises==NULL) || (flag == true)){
+        return;
+    }
+	else{
+		NodoAVL* ciudadAux = paises->ciudad;
+        ExisteConexionG2(ciudadAux,flag, codConexion);
+        ExisteConexionG(paises->Hizq,flag, codConexion);
+        ExisteConexionG(paises->Hder,flag, codConexion);
+    }
+}
 
 void listaC::CargarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
 	ifstream archivo;
@@ -328,30 +354,22 @@ void listaC::CargarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
         exit(1);
     }
     else{
+    	bool flag = false; 
     	while(!archivo.eof()){
     		getline(archivo,texto);
     		int posPC = texto.find(";"); int codTipTren = atoi(texto.substr(0, posPC).c_str()); 
 	        string Todo = texto.substr(posPC + 1, texto.length()); int posPC2 = Todo.find(";"); int codTren = atoi(Todo.substr(0, posPC2).c_str()); 
 	        string Todo2 = Todo.substr(posPC2 + 1, Todo.length()); int posPC3 = Todo2.find(";"); int codRuta = atoi((Todo2.substr(0, posPC3).c_str())); 
-	        string Todo3 = Todo2.substr(posPC3 + 1, Todo2.length()); int posPC4 = Todo3.find(";"); int codPais = atoi((Todo3.substr(0, posPC4).c_str())); 
-	        string Todo4 = Todo3.substr(posPC4 + 1, Todo3.length()); int posPC5 = Todo4.find(";"); int codCiudad = atoi((Todo4.substr(0, posPC5).c_str())); 
-	        string Todo5 = Todo4.substr(posPC5 + 1, Todo4.length()); int posPC6 = Todo5.find(";"); int codPais2 = atoi((Todo5.substr(0, posPC6).c_str())); 
-	        string Todo6 = Todo5.substr(posPC6 + 1, Todo5.length()); int posPC7 = Todo6.find(";"); int codCiudad2 = atoi((Todo6.substr(0, posPC7).c_str())); 
-	        string Todo7 = Todo6.substr(posPC7 + 1, Todo6.length()); int posPC8 = Todo7.find(";"); int codPrecio = atoi((Todo7.substr(0, posPC8).c_str())); 
-	        
-	        if(ExistePais(paises,codPais)&&(ExistePais(paises,codPais2))){
-	        	pNodoBinario paisAux = DevolverPais(paises,codPais);
-				pNodoBinario paisAux2 = DevolverPais(paises,codPais2);
-				if((ExisteCiudad(paisAux->ciudad,codCiudad))&&(ExisteCiudad(paisAux2->ciudad,codCiudad2))){
-					if(ExisteTipoTren(tipoTrenes,codTipTren)){
-						pNodoTipoTren trenAux = DevolverTipoTren(tipoTrenes,codTipTren);
-						if(ExisteTren(trenAux->tren,codTren)){
-							if(!ExisteRuta(codRuta)){
-								InsertarFinal(codTipTren,codTren,codRuta,codPais,codCiudad,codPais2,codCiudad2,codPrecio);					
-							}
-							else{
-								continue;
-							}
+	        string Todo3 = Todo2.substr(posPC3 + 1, Todo2.length()); int posPC4 = Todo3.find(";"); int codConexion = atoi((Todo3.substr(0, posPC4).c_str())); 
+	        string Todo4 = Todo3.substr(posPC4 + 1, Todo3.length()); int posPC5 = Todo4.find(";"); int codPrecio = atoi((Todo4.substr(0, posPC5).c_str()));
+	        ExisteConexionG(paises, flag, codConexion);
+	        if(flag){
+	        	flag = false;
+	        	if(ExisteTipoTren(tipoTrenes,codTipTren)){
+					pNodoTipoTren trenAux = DevolverTipoTren(tipoTrenes,codTipTren);
+					if(ExisteTren(trenAux->tren,codTren)){
+						if(!ExisteRuta(codRuta)){
+							InsertarFinal(codTipTren,codTren,codRuta,codConexion,codPrecio);					
 						}
 						else{
 							continue;
@@ -363,92 +381,65 @@ void listaC::CargarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
 				}
 				else{
 					continue;
-				}
-			}
-			else{
+				} 
+			}else{
 				continue;
-			} 
+			}
     	}
     	archivo.close();
     }
 }
 
 
+
 void listaC::InsertarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
 	int codTipTren; cout<<"Ingrese el codigo tipo de tren: "; cin>>codTipTren; cout<<endl;
 	int codTren; cout<<"Ingrese el codigo de tren: "; cin>>codTren; cout<<endl;
 	int codRuta; cout<<"Ingrese el codigo de la ruta: "; cin>>codRuta; cout<<endl;
-	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
-	int codCiudad; cout<<"Ingrese el codigo de la ciudad: "; cin>>codCiudad; cout<<endl;
-	int codPais2; cout<<"Ingrese el codigo del pais destino: "; cin>>codPais2; cout<<endl;
-	int codCiudad2; cout<<"Ingrese el codigo de la ciudad destino: "; cin>>codCiudad2; cout<<endl;
+	int codConexion; cout<<"Ingrese el codigo nuevo de la conexion: "; cin>>codConexion; cout<<endl;
 	int codPrecio; cout<<"Ingrese el precio de la ruta: "; cin>>codPrecio; cout<<endl;
-	if(ExistePais(paises,codPais)&&(ExistePais(paises,codPais2))){
-    	pNodoBinario paisAux = DevolverPais(paises,codPais);
-		pNodoBinario paisAux2 = DevolverPais(paises,codPais2);
-		if((ExisteCiudad(paisAux->ciudad,codCiudad))&&(ExisteCiudad(paisAux2->ciudad,codCiudad2))){
-			if(ExisteTipoTren(tipoTrenes,codTipTren)){
-				pNodoTipoTren trenAux = DevolverTipoTren(tipoTrenes,codTipTren);
-				if(ExisteTren(trenAux->tren,codTren)){
-					NodoAVLTren *TrenA = DevolverTren(trenAux->tren,codTren);
-					if(!ExisteRuta(codRuta)){
-						InsertarFinal(codTipTren,codTren,codRuta,codPais,codCiudad,codPais2,codCiudad2,codPrecio);
-						TrenA->codRutas.insertarBalanceado(codRuta);
-						
-						cout<<"Ruta insertada con exito"<<endl;				
-					}
-					else{
-						cout<<"El codigo de ruta ya existe"<<endl;
-					}
+	bool flag = false; ExisteConexionG(paises, flag, codConexion);
+	if(flag){
+		if(ExisteTipoTren(tipoTrenes,codTipTren)){
+			pNodoTipoTren trenAux = DevolverTipoTren(tipoTrenes,codTipTren);
+			if(ExisteTren(trenAux->tren,codTren)){
+				NodoAVLTren *TrenA = DevolverTren(trenAux->tren,codTren);
+				if(!ExisteRuta(codRuta)){
+					InsertarFinal(codTipTren,codTren,codRuta,codConexion ,codPrecio);
+					TrenA->codRutas.insertarBalanceado(codRuta);
+					
+					cout<<"Ruta insertada con exito"<<endl;				
 				}
 				else{
-					cout<<"El codigo de tren no existe"<<endl;
+					cout<<"El codigo de ruta ya existe"<<endl;
 				}
 			}
 			else{
-				cout<<"El codigo de tipo de tren no existe"<<endl;
+				cout<<"El codigo de tren no existe"<<endl;
 			}
 		}
 		else{
-			cout<<"La ciudad de origen o destino no existe"<<endl;
+			cout<<"El codigo de tipo de tren no existe"<<endl;
 		}
 	}
 	else{
-		cout<<"El pais de origen o destino no existe"<<endl;
+		cout<<"El codigo de conexion no existe"<<endl;
 	} 
 }
 
 void listaC :: ModificarRutas(pNodoBinario &paises){
 	int codRuta; cout<<"Ingrese el codigo de la ruta: "; cin>>codRuta; cout<<endl;
-	int codPais; cout<<"Ingrese el codigo nuevo del pais: "; cin>>codPais; cout<<endl;
-	int codCiudad; cout<<"Ingrese el codigo nuevo de la ciudad: "; cin>>codCiudad; cout<<endl;
-	int codPais2; cout<<"Ingrese el codigo nuevo del pais destino: "; cin>>codPais2; cout<<endl;
-	int codCiudad2; cout<<"Ingrese el codigo nuevo de la ciudad destino: "; cin>>codCiudad2; cout<<endl;
+	int codConexion; cout<<"Ingrese el codigo nuevo de la conexion: "; cin>>codConexion; cout<<endl;
 	int codPrecio; cout<<"Ingrese el precio nuevo de la ruta: "; cin>>codPrecio; cout<<endl;
-	if(ExistePais(paises,codPais)&&(ExistePais(paises,codPais2))){
-    	pNodoBinario paisAux = DevolverPais(paises,codPais);
-		pNodoBinario paisAux2 = DevolverPais(paises,codPais2);
-		if((ExisteCiudad(paisAux->ciudad,codCiudad))&&(ExisteCiudad(paisAux2->ciudad,codCiudad2))){
-			if(ExisteRuta(codRuta)){
-				pnodoCir cambio = DevolverRuta(codRuta);
-				cambio->codPais1 = codPais;
-				cambio->codPais2 = codPais2;
-				cambio->codCiudad1 = codCiudad;
-				cambio->codCiudad2 = codCiudad2;
-				cambio->precio = codPrecio;	
-				cout<<"Modificacion exitosa"<<endl;			
-			}
-			else{
-				cout<<"El codigo de ruta no existe"<<endl;
-			}
-		}
-		else{
-			cout<<"La ciudad de origen o destino no existe"<<endl;
-		}
+	if(ExisteRuta(codRuta)){
+		pnodoCir cambio = DevolverRuta(codRuta);
+		cambio->codConexion = codConexion;
+		cambio->precio = codPrecio;	
+		cout<<"Modificacion exitosa"<<endl;			
 	}
 	else{
-		cout<<"El pais de origen o destino no existe"<<endl;
-	} 
+		cout<<"El codigo de ruta no existe"<<endl;
+	}
 }
 
 void listaC :: ModificarPrecio(pNodoBinario &paises){
@@ -662,6 +653,45 @@ void ReservasUsuarios(listaUsuario &listaUsuarios){
 	}
 }
 
+void DevolverConexionG3(pNodoBinarioRN &R,bool &flag,pNodoBinarioRN &ConexionAux, int codConexion){
+	if(R==NULL){
+		return;
+	}
+	else{
+    	if(R->valor==codConexion){
+    		flag = true;
+    		ConexionAux = R;
+    		return;
+		}
+        DevolverConexionG3(R->Hizq,flag,ConexionAux, codConexion);
+        DevolverConexionG3(R->Hder,flag,ConexionAux, codConexion);
+    }
+}
+
+void DevolverConexionG2(NodoAVL *&ciudades,bool &flag,pNodoBinarioRN &ConexionAux, int codConexion){ 
+    if((ciudades != NULL) && (flag != true)) {
+		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
+		DevolverConexionG3(conexionAux,flag,ConexionAux, codConexion);
+	
+		DevolverConexionG2(ciudades->izquierda,flag,ConexionAux, codConexion);  
+    	DevolverConexionG2(ciudades->derecha,flag,ConexionAux, codConexion);
+    }
+	else{
+		return;
+	}  
+}
+
+void DevolverConexionG(pNodoBinario &paises,bool &flag,pNodoBinarioRN &ConexionAux, int codConexion){
+    if((paises==NULL) || (flag == true)){
+        return;
+    }
+	else{
+		NodoAVL* ciudadAux = paises->ciudad;
+        DevolverConexionG2(ciudadAux,flag,ConexionAux, codConexion);
+        DevolverConexionG(paises->Hizq,flag,ConexionAux, codConexion);
+        DevolverConexionG(paises->Hder,flag,ConexionAux, codConexion);
+    }
+}
 
 void Reservacion (pNodoTipoTren &tipoTrenes,pNodoBinario &paises,listaUsuario &listaUsuarios, listaC &rutas, listaBoleteria &reporteCiudad, listaBoleteria &reporteTren){
 	int codVentanilla; cout<<"Ingrese el codigo de la ventana que desea atender: "; cin>>codVentanilla; cout<<endl;
@@ -688,10 +718,13 @@ void Reservacion (pNodoTipoTren &tipoTrenes,pNodoBinario &paises,listaUsuario &l
 							atender->ventanilla.BorrarInicio();
 							//REPORTES-------------------------------------------------------------------------
 							rutas.DevolverRuta(codRuta)->reservacion++;
-							DevolverPais(paises,rutas.DevolverRuta(codRuta)->codPais2)->reservacion++;
-							bool bandera = reporteCiudad.InsertarCiudad(rutas.DevolverRuta(codRuta)->codCiudad2,rutas.DevolverRuta(codRuta)->codPais2);
+							pnodoCir auxRutas = rutas.DevolverRuta(codRuta);
+							pNodoBinarioRN conexionAux; bool flag = false;
+							DevolverConexionG(paises,flag,conexionAux, auxRutas->codConexion);
+							DevolverPais(paises,conexionAux->codPais)->reservacion++;
+							bool bandera = reporteCiudad.InsertarCiudad(conexionAux->codCiudad,conexionAux->codPais);
 							if(!bandera){
-								reporteCiudad.ModCiudad(rutas.DevolverRuta(codRuta)->codCiudad2,rutas.DevolverRuta(codRuta)->codPais2);
+								reporteCiudad.ModCiudad(conexionAux->codCiudad,conexionAux->codPais);
 							}
 							bool bandera1 = reporteTren.InsertarCiudad(codTren, codVentanilla);
 							if(!bandera1){

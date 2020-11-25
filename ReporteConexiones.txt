@@ -199,3 +199,17 @@ Conexiones de la ciudad de codigo 678 del pais 20
 Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
 Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
 ------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------

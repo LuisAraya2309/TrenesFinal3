@@ -674,7 +674,5 @@ void EliminarCiudad(pNodoBinario &paises){
 		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
 	}
 }
-
-
 #endif	
 
