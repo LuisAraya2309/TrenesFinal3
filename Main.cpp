@@ -40,14 +40,18 @@ int main(){
 	CargarTrenes(tipoTrenes);//Trenes
 	
 	listaC rutas;
-	rutas.CargarRutas(paises,tipoTrenes);//Rutas
-	CargarCodRutas(tipoTrenes,rutas); //CodRutas
+	//rutas.CargarRutas(paises,tipoTrenes);//Rutas
+	//CargarCodRutas(tipoTrenes,rutas); //CodRutas
 	
 	//Pruebas
 
-	/*ConsultarConexiones(paises);
-	EliminarCiudad(paises);
-	ConsultarConexiones(paises);*/
+	//ConsultarConexiones(paises);
+	ConsultarCiudades(paises);
+	EliminarCiudad(paises,rutas);
+	ConsultarCiudades(paises);
+	//ConsultarConexiones(paises);
+	//rutas.ConsultarRuta();
+	
 	//Pruebas
 	
 	BTree admins(3);
@@ -55,7 +59,7 @@ int main(){
 	
 	ArbolUsuario usuarios(5);
 	CargarUsuarios(usuarios,paises);//Carga usuarios
-	
+	/*
 	listaBoleteria boletos;
 	listaUsuario listaUsuarios;
 	ofstream archivo; archivo.open("ReportePaises.txt", ios::app); archivo<<"------------------Registro Paises------------------"<<endl; archivo.close();
@@ -427,5 +431,6 @@ int main(){
 	                break;           
     	} 		 
 	}while (opcion != 3);
+	*/
     return 0;
 }
