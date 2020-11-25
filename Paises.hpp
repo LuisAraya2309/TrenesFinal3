@@ -5,6 +5,7 @@
 #include<sstream>
 #include<fstream>
 #include<iostream>
+#include<queue>
 #include <stdlib.h>
 #include <cstdlib>
 #include <math.h>
@@ -564,7 +565,51 @@ void EliminarCiudad(NodoAVL* &ciudades, int x){
          delete p;
      }
 }
+//-----------------
+void deleteNode(pNodoBinarioRN root, int data)
+{
+    if(root == NULL){
+       
+    }
 
+    queue<pNodoBinarioRN> q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        pNodoBinarioRN temp = q.front();
+        q.pop();
+
+        if(temp->valor == data)
+        {
+            pNodoBinarioRN current = root;
+            pNodoBinarioRN prev;
+
+            while(current->Hder != NULL)
+            {
+                prev = current;
+                current = current->Hder;
+            }
+
+            temp->valor = current->valor;
+            prev->Hder = NULL;
+            free(current);
+
+            cout << "Deleted\n";
+
+            
+        }
+
+        if(temp->Hizq != NULL)
+            q.push(temp->Hizq);
+        if(temp->Hder != NULL)
+            q.push(temp->Hder);
+    }
+
+}
+
+
+//-----------------
 void EliminarCG3(pNodoBinarioRN &R,int ciudad){
 	if(R==NULL){
 		return;
@@ -572,7 +617,7 @@ void EliminarCG3(pNodoBinarioRN &R,int ciudad){
 	else{
     	if(R->codCiudad==ciudad){
     		cout<<"Eliminando conexion de ciudad: "<<R->valor<<endl;
-    		return EliminarRN(R,R->valor);
+    		deleteNode(R,R->valor);
 		}
         EliminarCG3(R->Hizq,ciudad);
         EliminarCG3(R->Hder,ciudad);
@@ -619,6 +664,7 @@ void EliminarCiudad(pNodoBinario &paises){
 			cout<<"Conexiones de la ciudad eliminadas con exito."<<endl;
 			//FALTA ELIMINAR RUTA
 			EliminarCG(paises, codCiudad);
+			EliminarCiudad(ciudadAux,codCiudad);
 		}
 		else{
 			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;

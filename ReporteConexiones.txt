@@ -140,3 +140,62 @@ Codigo de Conexion: 96358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
 Codigo de Conexion: 936358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
 Codigo de Conexion: 936582 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
 ------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 1234 del pais 12
+Codigo de Conexion: 93658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 9658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 4321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43213 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 432321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 96358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936582 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+
+Conexiones de la ciudad de codigo 1234 del pais 12
+Codigo de Conexion: 93658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 9658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 4321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43213 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 432321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 96358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936582 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 1234 del pais 12
+Codigo de Conexion: 93658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 9658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 4321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43213 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 432321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 96358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936582 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+
+Conexiones de la ciudad de codigo 1234 del pais 12
+
+No existen conexiones de la ciudad de codigo 1234 del pais 12
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 1234 del pais 12
+Codigo de Conexion: 93658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 9658 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 4321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 43213 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 432321 Pais destino: 10 Ciudad Destino: 789 Tiempo: 8
+Codigo de Conexion: 96358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936358 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+Codigo de Conexion: 936582 Pais destino: 10 Ciudad Destino: 789 Tiempo: 4
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+------------------Registro Conexiones------------------
