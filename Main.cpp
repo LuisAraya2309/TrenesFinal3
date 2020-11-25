@@ -45,7 +45,7 @@ int main(){
 	
 	//Pruebas
 	ConsultarConexiones(paises);
-	EliminarConexion(paises);
+	EliminarCiudad(paises);
 	ConsultarConexiones(paises);
 	//Pruebas
 	

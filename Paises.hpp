@@ -413,7 +413,13 @@ void ConsultarConexiones(pNodoBinario &paises){
 		if(ExisteCiudad(pais->ciudad,codCiudad)){
 			NodoAVL *ciudadAux = DevolverCiudad(pais->ciudad,codCiudad);
 			archivo<<endl<<"Conexiones de la ciudad de codigo "<<codCiudad<<" del pais "<<paisAux<<endl;
-			PreordenRN(ciudadAux->conexiones.raiz);
+			if(ciudadAux->conexiones.raiz != NULL){
+				PreordenRN(ciudadAux->conexiones.raiz);
+			}
+			else{
+				archivo<<endl<<"No existen conexiones de la ciudad de codigo "<<codCiudad<<" del pais "<<paisAux<<endl;
+				cout<<"La ciudad no tiene conexiones"<<endl;
+			}
 		}else{
 			cout<<"El codigo de la ciudad no existe"<<endl;
 		}
@@ -478,8 +484,6 @@ void EliminarPais(pNodoBinario &paises, int x){
      }
 }
 
-
-
  pNodoBinarioRN unirRN(pNodoBinarioRN izq, pNodoBinarioRN der){
     if(izq==NULL) return der;
     if(der==NULL) return izq;
@@ -491,16 +495,21 @@ void EliminarPais(pNodoBinario &paises, int x){
 }
 
 void EliminarRN(pNodoBinarioRN &conexiones, int x){
-     if(conexiones==NULL) return;
-     if(x<conexiones->valor)
-         EliminarRN(conexiones->Hizq, x);
-     else if(x>conexiones->valor)
-         EliminarRN(conexiones->Hder, x);
-     else{
-         pNodoBinarioRN p = conexiones;
-         conexiones = unirRN(conexiones->Hizq, conexiones->Hder);
-         delete p;
-     }
+    if(conexiones==NULL){
+    	cout<<"NULL"<<endl;
+    	return;
+	}
+    if(x<conexiones->valor){
+    	EliminarRN(conexiones->Hizq, x);
+	}
+    else if(x>conexiones->valor){
+    	EliminarRN(conexiones->Hder, x);
+	}
+    else{
+        pNodoBinarioRN p = conexiones;
+        conexiones = unirRN(conexiones->Hizq, conexiones->Hder);
+        delete p;
+    }
 }
 
 void EliminarConexion(pNodoBinario &paises){
@@ -558,43 +567,39 @@ void EliminarCiudad(NodoAVL* &ciudades, int x){
 
 void EliminarCG3(pNodoBinarioRN &R,int ciudad){
 	if(R==NULL){
-		cout<<"Conexiones NULL"<<endl;
 		return;
 	}
 	else{
     	if(R->codCiudad==ciudad){
-    		cout<<R->valor<<endl;
-    		cout<<"Eliminando conexion de ciudad."<<endl;
-    		EliminarRN(R,R->valor);
+    		cout<<"Eliminando conexion de ciudad: "<<R->valor<<endl;
+    		return EliminarRN(R,R->valor);
 		}
         EliminarCG3(R->Hizq,ciudad);
         EliminarCG3(R->Hder,ciudad);
     }
 }
 
-void EliminarCG2(NodoAVL *ciudades,int ciudad){ 
+void EliminarCG2(NodoAVL *&ciudades,int ciudad){ 
     if(ciudades != NULL)  {
-		cout<<"Recorriendo ciudad: "<<ciudades->codCiudad<<endl;
-		pNodoBinarioRN &conexionAux = ciudades->conexiones.raiz; 
+		cout<<"Recorriendo la ciudad: "<<ciudades->codCiudad<<endl;
+		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
 		EliminarCG3(conexionAux,ciudad);
 	
 		EliminarCG2(ciudades->izquierda,ciudad);  
     	EliminarCG2(ciudades->derecha,ciudad);
     }
 	else{
-		cout<<"Ciudades NULL"<<endl;
 		return;
 	}  
 }
 
 void EliminarCG(pNodoBinario &paises,int ciudad){
     if(paises==NULL){
-    	cout<<"Paises NULL"<<endl;
         return;
     }
 	else{
-		cout<<"Recorriendo pais: "<<paises->valor<<endl;
-		NodoAVL* &ciudadAux = paises->ciudad;
+		cout<<endl<<endl<<"Recorriendo el pais: "<<paises->valor<<endl;
+		NodoAVL* ciudadAux = paises->ciudad;
         EliminarCG2(ciudadAux,ciudad);
         EliminarCG(paises->Hizq,ciudad);
         EliminarCG(paises->Hder,ciudad);
@@ -608,16 +613,19 @@ void EliminarCiudad(pNodoBinario &paises){
 		pNodoBinario paisAux = DevolverPais(paises,codPais);
 		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
 			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
-			//Borra conexiones de esa ciudad
-			pNodoBinarioRN aux = ciudadAux->conexiones.raiz;
-			
+			while(ciudadAux->conexiones.raiz != NULL){
+				EliminarRN(ciudadAux->conexiones.raiz, ciudadAux->conexiones.raiz->valor);
+			}
+			cout<<"Conexiones de la ciudad eliminadas con exito."<<endl;
+			//FALTA ELIMINAR RUTA
+			EliminarCG(paises, codCiudad);
 		}
 		else{
-			cout<<"El codigo de ciudad ingresado no existe."<<endl;
+			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;
 		}
 	}
 	else{
-		cout<<"El codigo de pais ingresado no existe."<<endl;
+		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
 	}
 }
 
