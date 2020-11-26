@@ -59,7 +59,7 @@ public:
     void ConsultarRuta(); 
     void BorrarFinal(); 
     void BorrarInicio(); 
-    void borrarPosicion(int pos); 
+    void BorrarRuta(int x); 
     int largoLista(); 
     void CargarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes);
     bool ExisteRuta(int codRuta);
@@ -186,7 +186,8 @@ void listaC::BorrarFinal()
             delete temp; 
         } 
     } 
-} 
+}
+ 
  
 void listaC::BorrarInicio() 
 { 
@@ -212,42 +213,38 @@ void listaC::BorrarInicio()
         } 
     } 
 } 
- 
-void listaC::borrarPosicion(int pos) 
-{ 
-    if (ListaVacia()) 
-        cout << "Lista vacia" << endl; 
-    else 
-    { 
-        if ((pos > largoLista()) || (pos < 0)) 
-            cout << "Error en posicion" << endl; 
-        else 
-        { 
-            if (pos == 1) 
-                BorrarInicio(); 
-            else 
-            { 
-                int cont = 2; 
-                pnodoCir aux = primero; 
-                while (cont < pos) 
-                { 
-                    aux = aux->siguiente; 
-                    cont++; 
-                } 
-                pnodoCir temp = aux->siguiente; 
-                aux->siguiente = aux->siguiente->siguiente; 
-                delete temp; 
-            } 
-        } 
-    } 
-} 
+void listaC::BorrarRuta(int x){
+	
+
+	if(primero->codConexion==x){
+		BorrarInicio();
+	}
+	else{
+		pnodoCir aux = primero;
+		while(aux->siguiente!=primero){
+			if(aux->siguiente->codConexion==x){
+				pnodoCir temp = aux->siguiente;
+				aux->siguiente = aux->siguiente->siguiente;
+				delete temp; 
+			}
+			else{
+				aux = aux->siguiente;
+			}
+		}
+		if(aux->siguiente->codConexion==x){
+			BorrarFinal(); 
+		}
+	}
+	
+	
+}
  
 void listaC::ConsultarRuta() { 
     pnodoCir aux = primero;
     if(aux== NULL){
     	cout<<"No hay ninuna ruta registrada"<<endl;
 	}else{
-		while (aux->siguiente != primero) { 
+		while (aux->siguiente != primero) {
         cout <<"Tipo tren: "<<aux->codTipTren << " Tren: " << aux->codTren << " Ruta: " << aux->codRutas << " Conexion: "<< aux->codConexion <<" Precio: "<< aux->precio << "-> "<<endl; 
         aux = aux->siguiente; 
 	    } 
@@ -790,3 +787,236 @@ int RutaMenor(listaC &rutas){
 	
 	return mayor->codRutas;
 }
+
+
+//Eliminaciones
+//---------------------------------------------------------
+
+
+
+pNodoBinario unirABB(pNodoBinario izq, pNodoBinario der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    pNodoBinario centro = unirABB(izq->Hder, der->Hizq);
+    izq->Hder = centro;
+    der->Hizq = izq;
+    return der;
+}
+
+void EliminarPais(pNodoBinario &paises, int x){
+     if(paises==NULL) return;
+
+     if(x<paises->valor)
+         EliminarPais(paises->Hizq, x);
+     else if(x>paises->valor)
+         EliminarPais(paises->Hder, x);
+
+     else{
+         pNodoBinario p = paises;
+         paises = unirABB(paises->Hizq, paises->Hder);
+         delete p;
+     }
+}
+
+ pNodoBinarioRN unirRN(pNodoBinarioRN izq, pNodoBinarioRN der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    pNodoBinarioRN centro = unirRN(izq->Hder, der->Hizq);
+    izq->Hder = centro;
+    der->Hizq = izq;
+    return der;
+}
+
+void EliminarRN(pNodoBinarioRN &conexiones, int x){
+    if(conexiones==NULL){
+    	cout<<"NULL"<<endl;
+    	return;
+	}
+    if(x<conexiones->valor){
+    	EliminarRN(conexiones->Hizq, x);
+	}
+    else if(x>conexiones->valor){
+    	EliminarRN(conexiones->Hder, x);
+	}
+    else{
+        pNodoBinarioRN p = conexiones;
+        conexiones = unirRN(conexiones->Hizq, conexiones->Hder);
+        delete p;
+    }
+}
+
+void EliminarConexion(pNodoBinario &paises, listaC &rutas){
+	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
+	int codCiudad; cout<<"Ingrese el codigo de la ciudad: "; cin>>codCiudad; cout<<endl;
+	int codConexion; cout<<"Ingrese el codigo de la conexion: "; cin>>codConexion; cout<<endl;
+	if(ExistePais(paises,codPais)){
+		pNodoBinario paisAux = DevolverPais(paises,codPais);
+		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
+			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
+			if(ExisteConexion(ciudadAux->conexiones.raiz,codConexion)){
+				EliminarRN(ciudadAux->conexiones.raiz,codConexion);
+				rutas.BorrarRuta(codConexion);
+				cout<<"Conexion eliminada con exito."<<endl;
+				
+				
+			}
+			else{
+				cout<<"El codigo de la conexion no existe"<<endl;
+			}
+		}
+		else{
+			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;
+		}
+	}
+	else{
+		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
+	}
+}
+
+
+
+//-----------------
+void deleteNode(pNodoBinarioRN root, int data)
+{
+    if(root == NULL){
+       
+    }
+
+    queue<pNodoBinarioRN> q;
+    q.push(root);
+
+    while(!q.empty())
+    {
+        pNodoBinarioRN temp = q.front();
+        q.pop();
+
+        if(temp->valor == data)
+        {
+            pNodoBinarioRN current = root;
+            pNodoBinarioRN prev;
+
+            while(current->Hder != NULL)
+            {
+                prev = current;
+                current = current->Hder;
+            }
+
+            temp->valor = current->valor;
+            prev->Hder = NULL;
+            free(current);
+
+            cout << "Deleted\n";
+
+            
+        }
+
+        if(temp->Hizq != NULL)
+            q.push(temp->Hizq);
+        if(temp->Hder != NULL)
+            q.push(temp->Hder);
+    }
+
+}
+
+
+//-----------------
+void EliminarCG3(pNodoBinarioRN &R,int ciudad){
+	if(R==NULL){
+		return;
+	}
+	else{
+    	if(R->codCiudad==ciudad){
+    		cout<<"Eliminando conexion de ciudad: "<<R->valor<<endl;
+    		deleteNode(R,R->valor);
+		}
+        EliminarCG3(R->Hizq,ciudad);
+        EliminarCG3(R->Hder,ciudad);
+    }
+}
+
+void EliminarCG2(NodoAVL *&ciudades,int ciudad){ 
+    if(ciudades != NULL)  {
+		cout<<"Recorriendo la ciudad: "<<ciudades->codCiudad<<endl;
+		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
+		EliminarCG3(conexionAux,ciudad);
+	
+		EliminarCG2(ciudades->izquierda,ciudad);  
+    	EliminarCG2(ciudades->derecha,ciudad);
+    }
+	else{
+		return;
+	}  
+}
+
+void EliminarCG(pNodoBinario &paises,int ciudad){
+    if(paises==NULL){
+        return;
+    }
+	else{
+		cout<<endl<<endl<<"Recorriendo el pais: "<<paises->valor<<endl;
+		NodoAVL* ciudadAux = paises->ciudad;
+        EliminarCG2(ciudadAux,ciudad);
+        EliminarCG(paises->Hizq,ciudad);
+        EliminarCG(paises->Hder,ciudad);
+    }
+}
+
+
+
+NodoAVL* unirCiudad(NodoAVL* &izq, NodoAVL* &der){
+    if(izq==NULL) return der;
+    if(der==NULL) return izq;
+
+    NodoAVL* centro = unirCiudad(izq->derecha, der->izquierda);
+    izq->derecha = centro;
+    der->izquierda = izq;
+    return der;
+}
+
+void EliminarCiudad(NodoAVL* &ciudades, int x){
+     if(ciudades==NULL){
+     	return;
+	 }
+     if(x<ciudades->codCiudad)
+         EliminarCiudad(ciudades->izquierda, x);
+     else if(x>ciudades->codCiudad)
+         EliminarCiudad(ciudades->derecha, x);
+     else{
+         NodoAVL* p = ciudades;
+         ciudades = unirCiudad(ciudades->izquierda, ciudades->derecha);
+         delete p;
+     }
+}
+
+void EliminarCiudad(pNodoBinario &paises,listaC &rutas){
+	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
+	int codCiudad; cout<<"Ingrese el codigo de la ciudad: "; cin>>codCiudad; cout<<endl;
+	if(ExistePais(paises,codPais)){
+		pNodoBinario paisAux = DevolverPais(paises,codPais);
+		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
+			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
+			while(ciudadAux->conexiones.raiz != NULL){
+				//rutas.BorrarRuta(ciudadAux->conexiones.raiz->valor);
+				EliminarRN(ciudadAux->conexiones.raiz, ciudadAux->conexiones.raiz->valor);
+			}			
+			cout<<"Conexiones de la ciudad eliminadas con exito."<<endl;
+			//EliminarCG(paises, codCiudad);
+			EliminarCiudad(ciudadAux,codCiudad);			
+		}
+		else{
+			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;
+		}
+	}
+	else{
+		cout<<"El pais de origen o destino de la conexion no existe"<<endl;
+	}
+}
+
+
+
+
+
+
+

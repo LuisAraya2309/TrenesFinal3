@@ -213,3 +213,163 @@ Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
 ------------------Registro Conexiones------------------
 ------------------Registro Conexiones------------------
 ------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+
+Conexiones de la ciudad de codigo 145 del pais 15
+Codigo de Conexion: 9568 Pais destino: 77 Ciudad Destino: 333 Tiempo: 5
+
+Conexiones de la ciudad de codigo 145 del pais 15
+
+No existen conexiones de la ciudad de codigo 145 del pais 15
+
+Conexiones de la ciudad de codigo 145 del pais 15
+Codigo de Conexion: 9568 Pais destino: 77 Ciudad Destino: 333 Tiempo: 5
+
+Conexiones de la ciudad de codigo 145 del pais 15
+
+No existen conexiones de la ciudad de codigo 145 del pais 15
+
+Conexiones de la ciudad de codigo 145 del pais 15
+Codigo de Conexion: 9568 Pais destino: 77 Ciudad Destino: 333 Tiempo: 5
+
+Conexiones de la ciudad de codigo 145 del pais 15
+Codigo de Conexion: 9568 Pais destino: 77 Ciudad Destino: 333 Tiempo: 5
+
+Conexiones de la ciudad de codigo 145 del pais 15
+
+No existen conexiones de la ciudad de codigo 145 del pais 15
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+
+Conexiones de la ciudad de codigo 145 del pais 15
+Codigo de Conexion: 9568 Pais destino: 77 Ciudad Destino: 333 Tiempo: 5
+
+Conexiones de la ciudad de codigo 145 del pais 15
+
+No existen conexiones de la ciudad de codigo 145 del pais 15
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+Codigo de Conexion: 9837 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 987 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98732 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+Codigo de Conexion: 98357 Pais destino: 12 Ciudad Destino: 1234 Tiempo: 5
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 678 del pais 20
+
+No existen conexiones de la ciudad de codigo 678 del pais 20
+
+Conexiones de la ciudad de codigo 789 del pais 10
+Codigo de Conexion: 964353 Pais destino: 20 Ciudad Destino: 678 Tiempo: 8
+Codigo de Conexion: 9635 Pais destino: 20 Ciudad Destino: 678 Tiempo: 8
+Codigo de Conexion: 96435 Pais destino: 20 Ciudad Destino: 678 Tiempo: 8
+Codigo de Conexion: 96352 Pais destino: 20 Ciudad Destino: 678 Tiempo: 8
+------------------Registro Conexiones------------------
+------------------Registro Conexiones------------------
+
+Conexiones de la ciudad de codigo 12322 del pais 100
+Codigo de Conexion: 899300 Pais destino: 20 Ciudad Destino: 678 Tiempo: 3
+Codigo de Conexion: 8300 Pais destino: 20 Ciudad Destino: 678 Tiempo: 3
