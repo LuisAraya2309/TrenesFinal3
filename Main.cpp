@@ -386,7 +386,6 @@ int main(){
 							            	ReportePaises(paises);
 							                system("pause>nul"); // Pausa 
 							                break; 
-							                 
 							            case 2: 
 							                ConsultarCiudades(paises);              
 							                system("pause>nul"); // Pausa 
@@ -411,7 +410,7 @@ int main(){
 							                CantAsientos(tipoTrenes);               
 							                system("pause>nul"); // Pausa 
 							                break;      
-								} 
+								}
 							}while (opcion != 8); 
 					}else{
 						cout<<"La identificacion del usuario no es valida"<<endl<<endl;
