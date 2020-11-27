@@ -308,7 +308,8 @@ void ExisteConexionG3(pNodoBinarioRN &R,bool &flag, int codConexion){
 		return;
 	}
 	else{
-    	if(R->valor==codConexion){
+		cout<<"Tercera recursividad conexion: "<<R->valor<<endl;
+		if(R->valor==codConexion){
     		flag = true;
     		return;
 		}
@@ -319,9 +320,9 @@ void ExisteConexionG3(pNodoBinarioRN &R,bool &flag, int codConexion){
 
 void ExisteConexionG2(NodoAVL *&ciudades,bool &flag, int codConexion){ 
     if((ciudades != NULL) && (flag != true)) {
+    	cout<<"Segunda recursividad ciudad: "<<ciudades->codCiudad<<endl;
 		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
 		ExisteConexionG3(conexionAux,flag, codConexion);
-	
 		ExisteConexionG2(ciudades->izquierda,flag, codConexion);  
     	ExisteConexionG2(ciudades->derecha,flag, codConexion);
     }
@@ -335,6 +336,7 @@ void ExisteConexionG(pNodoBinario &paises,bool &flag, int codConexion){
         return;
     }
 	else{
+		cout<<"Primera recursividad pais: "<<paises->valor<<endl;
 		NodoAVL* ciudadAux = paises->ciudad;
         ExisteConexionG2(ciudadAux,flag, codConexion);
         ExisteConexionG(paises->Hizq,flag, codConexion);
@@ -379,7 +381,8 @@ void listaC::CargarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
 				else{
 					continue;
 				} 
-			}else{
+			}
+			else{
 				continue;
 			}
     	}
@@ -404,7 +407,6 @@ void listaC::InsertarRutas(pNodoBinario &paises,pNodoTipoTren &tipoTrenes){
 				if(!ExisteRuta(codRuta)){
 					InsertarFinal(codTipTren,codTren,codRuta,codConexion ,codPrecio);
 					TrenA->codRutas.insertarBalanceado(codRuta);
-					
 					cout<<"Ruta insertada con exito"<<endl;				
 				}
 				else{
@@ -860,7 +862,6 @@ void EliminarConexion(pNodoBinario &paises, listaC &rutas){
 				rutas.BorrarRuta(codConexion);
 				cout<<"Conexion eliminada con exito."<<endl;
 				
-				
 			}
 			else{
 				cout<<"El codigo de la conexion no existe"<<endl;
@@ -922,73 +923,10 @@ void deleteNode(pNodoBinarioRN root, int data)
 
 
 //-----------------
-void EliminarCG3(pNodoBinarioRN &R,int ciudad){
-	if(R==NULL){
-		return;
-	}
-	else{
-    	if(R->codCiudad==ciudad){
-    		cout<<"Eliminando conexion de ciudad: "<<R->valor<<endl;
-    		deleteNode(R,R->valor);
-		}
-        EliminarCG3(R->Hizq,ciudad);
-        EliminarCG3(R->Hder,ciudad);
-    }
-}
-
-void EliminarCG2(NodoAVL *&ciudades,int ciudad){ 
-    if(ciudades != NULL)  {
-		cout<<"Recorriendo la ciudad: "<<ciudades->codCiudad<<endl;
-		pNodoBinarioRN conexionAux = ciudades->conexiones.raiz; 
-		EliminarCG3(conexionAux,ciudad);
-	
-		EliminarCG2(ciudades->izquierda,ciudad);  
-    	EliminarCG2(ciudades->derecha,ciudad);
-    }
-	else{
-		return;
-	}  
-}
-
-void EliminarCG(pNodoBinario &paises,int ciudad){
-    if(paises==NULL){
-        return;
-    }
-	else{
-		cout<<endl<<endl<<"Recorriendo el pais: "<<paises->valor<<endl;
-		NodoAVL* ciudadAux = paises->ciudad;
-        EliminarCG2(ciudadAux,ciudad);
-        EliminarCG(paises->Hizq,ciudad);
-        EliminarCG(paises->Hder,ciudad);
-    }
-}
 
 
 
-NodoAVL* unirCiudad(NodoAVL* &izq, NodoAVL* &der){
-    if(izq==NULL) return der;
-    if(der==NULL) return izq;
 
-    NodoAVL* centro = unirCiudad(izq->derecha, der->izquierda);
-    izq->derecha = centro;
-    der->izquierda = izq;
-    return der;
-}
-
-void EliminarCiudad(NodoAVL* &ciudades, int x){
-     if(ciudades==NULL){
-     	return;
-	 }
-     if(x<ciudades->codCiudad)
-         EliminarCiudad(ciudades->izquierda, x);
-     else if(x>ciudades->codCiudad)
-         EliminarCiudad(ciudades->derecha, x);
-     else{
-         NodoAVL* p = ciudades;
-         ciudades = unirCiudad(ciudades->izquierda, ciudades->derecha);
-         delete p;
-     }
-}
 
 void EliminarCiudad(pNodoBinario &paises,listaC &rutas){
 	int codPais; cout<<"Ingrese el codigo del pais: "; cin>>codPais; cout<<endl;
@@ -996,14 +934,7 @@ void EliminarCiudad(pNodoBinario &paises,listaC &rutas){
 	if(ExistePais(paises,codPais)){
 		pNodoBinario paisAux = DevolverPais(paises,codPais);
 		if(ExisteCiudad(paisAux->ciudad,codCiudad)){
-			NodoAVL *ciudadAux = DevolverCiudad(paisAux->ciudad,codCiudad);
-			while(ciudadAux->conexiones.raiz != NULL){
-				//rutas.BorrarRuta(ciudadAux->conexiones.raiz->valor);
-				EliminarRN(ciudadAux->conexiones.raiz, ciudadAux->conexiones.raiz->valor);
-			}			
-			cout<<"Conexiones de la ciudad eliminadas con exito."<<endl;
-			//EliminarCG(paises, codCiudad);
-			EliminarCiudad(ciudadAux,codCiudad);			
+					
 		}
 		else{
 			cout<<"La ciudad de origen o destino de la conexion no existe"<<endl;

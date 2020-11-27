@@ -1,5 +1,6 @@
 #pragma once
 #include "VentanaUsuario1.h"
+
 namespace SistemaTrenes3 {
 
 	using namespace System;
@@ -8,13 +9,13 @@ namespace SistemaTrenes3 {
 	using namespace System::Windows::Forms;
 	using namespace System::Data;
 	using namespace System::Drawing;
+	using namespace std;
 	
 	/// <summary>
 	/// Resumen de VentanaInicial
 	/// </summary>
 	public ref class VentanaInicial : public System::Windows::Forms::Form
 	{
-
 	public:
 
 		VentanaInicial(void)

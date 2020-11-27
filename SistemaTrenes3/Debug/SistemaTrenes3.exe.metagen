@@ -21,3 +21,5 @@ Class SistemaTrenes3.VentanaUsuario: AutoLayout, AnsiClass, Class, Public, Befor
 Class SistemaTrenes3.VentanaInicial: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 loca : Public

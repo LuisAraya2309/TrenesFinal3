@@ -40,15 +40,15 @@ int main(){
 	CargarTrenes(tipoTrenes);//Trenes
 	
 	listaC rutas;
-	//rutas.CargarRutas(paises,tipoTrenes);//Rutas
-	//CargarCodRutas(tipoTrenes,rutas); //CodRutas
+	rutas.CargarRutas(paises,tipoTrenes);//Rutas
+	CargarCodRutas(tipoTrenes,rutas); //CodRutas
 	
 	//Pruebas
 
 	//ConsultarConexiones(paises);
-	ConsultarCiudades(paises);
-	EliminarCiudad(paises,rutas);
-	ConsultarCiudades(paises);
+	//ConsultarConexiones(paises);
+	//EliminarConexion(paises,rutas);
+	//ConsultarConexiones(paises);
 	//ConsultarConexiones(paises);
 	//rutas.ConsultarRuta();
 	

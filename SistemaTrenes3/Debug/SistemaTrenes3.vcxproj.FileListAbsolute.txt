@@ -4,3 +4,9 @@ C:\Users\DELL\Desktop\TEC\II Semestre\Estructura de datos\Progras\SistemaTrenes3
 C:\Users\DELL\Desktop\TEC\II Semestre\Estructura de datos\Progras\SistemaTrenes3\Debug\SistemaTrenes3.VentanaInicial.resources
 C:\Users\DELL\Desktop\TEC\II Semestre\Estructura de datos\Progras\SistemaTrenes3\Debug\SistemaTrenes3.vcxproj.GenerateResource.cache
 C:\Users\DELL\Desktop\TEC\II Semestre\Estructura de datos\Progras\SistemaTrenes3\Debug\SistemaTrenes3.VentanaUsuario1.resources
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.vcxprojAssemblyReference.cache
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.VentanaInicial.resources
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.VentanaUsuario1.resources
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.vcxproj.GenerateResource.cache
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.exe
+E:\TEC\ED\Proyecto 3\TrenesFinal3\SistemaTrenes3\Debug\SistemaTrenes3.pdb
