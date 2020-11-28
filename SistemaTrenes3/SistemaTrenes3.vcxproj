@@ -128,6 +128,9 @@
     <ClInclude Include="Ciudades.h" />
     <ClInclude Include="CodRutas.h" />
     <ClInclude Include="Conexiones.h" />
+    <ClInclude Include="VentanaAdmin.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Paises.h" />
     <ClInclude Include="Reservacion.h" />
     <ClInclude Include="Rutas.h" />
@@ -143,6 +146,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="VentanaAdmin.resx">
+      <DependentUpon>VentanaAdmin.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VentanaInicial.resx">
       <DependentUpon>VentanaInicial.h</DependentUpon>
     </EmbeddedResource>

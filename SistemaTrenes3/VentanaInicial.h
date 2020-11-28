@@ -1,5 +1,6 @@
 #pragma once
 #include "VentanaUsuario1.h"
+#include "VentanaAdmin.h"
 
 namespace SistemaTrenes3 {
 
@@ -163,13 +164,15 @@ namespace SistemaTrenes3 {
 		private: System::Void btUsuario_Click(System::Object^ sender, System::EventArgs^ e) {
 			String^ id = this->Identificacion->Text;
 			Identificacion->Text = "La identificacion no existe";
-			VentanaUsuario^ usuario = gcnew VentanaUsuario();
+			VentanaUsuario1^ usuario = gcnew VentanaUsuario1();
 			usuario->ShowDialog();
 
 		}
 		private: System::Void btAdmin_Click(System::Object^ sender, System::EventArgs^ e) {
 			String^ id = this->Identificacion->Text;
 			Identificacion->Text = "La identificacion no existe";
+			VentanaAdmin^ admin = gcnew VentanaAdmin();
+			admin->ShowDialog();
 		}
 	};
 }
